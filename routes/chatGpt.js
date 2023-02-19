@@ -1,10 +1,10 @@
 const { Configuration, OpenAIApi } = require("openai");
-const conversation = require("../model/conversation");
+const { key } = require("../config");
 const Conversation = require("../model/conversation");
 
 const configuration = new Configuration({
   organization: "org-N4JkQzCTQRDo4RKdRxsKisSL",
-  apiKey: "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",
+  apiKey: key,
 });
 
 const openai = new OpenAIApi(configuration);
