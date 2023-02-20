@@ -8,6 +8,7 @@ const conversationSchema = new mongoose.Schema({
       sender: { type: "string" },
       message: { type: String, required: true },
       createdAt: { type: Date, default: Date.now },
+      islike: { type: Boolean },
     },
   ],
 });

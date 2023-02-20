@@ -1,19 +1,21 @@
 const mongoose = require("mongoose");
-const { port, mongoUri } = require("./config");
+const { port, mongoUri, clientUrl } = require("./config");
 const express = require("express");
+const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const userRoute = require("./routes/user");
 const gptRoute = require("./routes/chatGpt");
 const app = express();
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: clientUrl,
   methods: "GET,POST,PUT,DELETE, PATCH",
   credentials: true,
 };
 
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
+app.use(express.static(path.join(__dirname, "uploads")));
 
 async function main() {
   mongoose.set("strictQuery", false);
