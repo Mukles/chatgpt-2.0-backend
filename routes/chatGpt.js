@@ -127,9 +127,10 @@ router.post("like/:conversationId", authenticateToken, async (req, res) => {
   }
 });
 
-router.delete("/clear/userId", authenticateToken, async (req, res) => {
+router.delete("/clear/:userId", authenticateToken, async (req, res) => {
   try {
-    await Conversation.deleteMany({ userId: userId });
+    const { userId } = req.params;
+    await Conversation.deleteMany({ userId });
     res.status(200).json({ message: "clear conversation successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
