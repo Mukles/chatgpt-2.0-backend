@@ -22,6 +22,10 @@ async function main() {
   await mongoose.connect(mongoUri);
 }
 
+app.get("/hello", (req, res) => {
+  res.status(200).send(<h1>Hello booss</h1>);
+});
+
 //user rotues
 app.use("/api/user", userRoute);
 
