@@ -8,7 +8,7 @@ const userRoute = require("./routes/user");
 const gptRoute = require("./routes/chatGpt");
 const app = express();
 const corsOptions = {
-  origin: clientUrl,
+  origin: [clientUrl, "http://localhost:3000"],
   methods: "GET,POST,PUT,DELETE, PATCH",
   credentials: true,
 };
