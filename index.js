@@ -23,7 +23,7 @@ async function main() {
 }
 
 app.get("/hello", (req, res) => {
-  res.status(200).send(<h1>Hello booss</h1>);
+  res.status(200).send("Hello boos");
 });
 
 //user rotues
