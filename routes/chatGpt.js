@@ -46,12 +46,12 @@ router.get("/message/:chatId", authenticateToken, async (req, res) => {
 
 router.post("/message", authenticateToken, async (req, res) => {
   try {
-    const { model, prompt, chatId, userId } = req.body;
+    const { model, prompt, chatId, userId, temperature } = req.body;
 
     const response = await openai.createCompletion({
       model,
       prompt,
-      temperature: 0,
+      temperature: Number(temperature),
       max_tokens: 3000,
       top_p: 1,
       frequency_penalty: 0.5,
