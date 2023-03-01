@@ -48,7 +48,7 @@ const upload = () => {
       ) {
         cb(null, true);
       } else {
-        cb(createError(error_msg));
+        cb(createError(req.fileValidationError));
       }
     },
   });

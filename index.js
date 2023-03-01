@@ -34,7 +34,8 @@ app.use("/api/gpt", gptRoute);
 
 //DEFAULT ERROR HANDLER
 app.use((err, req, res, next) => {
-  res.status(500).json({ message: err?.message || "Something went wrong!" });
+  console.error(err.stack);
+  res.status(500).json({ message: err?.message || "something went wrong!" });
 });
 
 main()
