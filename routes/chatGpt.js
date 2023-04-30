@@ -4,7 +4,6 @@ const authenticateToken = require("../middleware/is-auth");
 const Conversation = require("../model/conversation");
 
 const configuration = new Configuration({
-  organization: "org-N4JkQzCTQRDo4RKdRxsKisSL",
   apiKey: key,
 });
 

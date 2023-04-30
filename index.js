@@ -19,7 +19,10 @@ app.use(express.static(path.join(__dirname, "uploads")));
 
 async function main() {
   mongoose.set("strictQuery", false);
-  await mongoose.connect(mongoUri);
+  console.log(mongoUri);
+  await mongoose.connect(
+    "mongodb+srv://facebook-clone:U4DvLJqFVehsWBy3@cluster0.zegxk1j.mongodb.net/?retryWrites=true&w=majority"
+  );
 }
 
 app.get("/hello", (req, res) => {

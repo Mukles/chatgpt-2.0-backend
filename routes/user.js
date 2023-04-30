@@ -10,16 +10,22 @@ router.post("/register", upload().single("file"), async (req, res) => {
     const { password } = req.body;
     const salt = await bcrypt.genSalt(12);
     const hashPassword = await bcrypt.hash(password, salt);
+
+    let image = null; // default value for image
+    if (req.file) {
+      image = req.file.filename;
+    }
+
     const newUser = new User({
       ...req.body,
       password: hashPassword,
-      image: req.file.filename,
+      image,
     });
 
     const savedUser = await newUser.save();
-    const { _id, name, email, image } = savedUser.toObject();
+    const { _id, name, email, image: savedImage } = savedUser.toObject();
     const token = generateToken({ _id, email });
-    res.status(200).json({ _id, name, email, token, image });
+    res.status(200).json({ _id, name, email, token, image: savedImage });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
